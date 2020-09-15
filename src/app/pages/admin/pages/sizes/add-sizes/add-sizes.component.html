@@ -1,0 +1,74 @@
+<div class="body-admin p-4">
+    
+    <div class=" p-2">
+        <span class="tittle-page">Nueva Talla</span><i class="far fa-question-circle help"></i><br>
+        <span class="sub-tittle">Puedes crear tallas para asigarselas cuando crees un producto. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+        <div class="line-gray" routerLink="/admin77/manage_categories/add"></div>
+        <button class="btn-admin btn-add btn" (click)="validate()" id="btn-add">
+            <span>
+                <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </span>
+            <span>
+                Crear Talla
+            </span>
+            
+        </button>
+    </div>
+    <br>
+
+    <div class="container-form p-4">
+        <div class="row">
+            <div class="col-md-6 line-rigth">
+                <form>
+                    <div class="form-group">
+                      <span class="text-danger p-1">*</span><label> Nombre del tipo de talla</label>
+                      <input class="form-control" placeholder="Ej: Calzado "  [(ngModel)]="typeSize" name="typeSize">
+                      <small *ngIf="typeErr !== ''" class="text-danger">{{typeErr}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Descipción</label>
+                        <textarea type="text" class="form-control" rows="3" name="description" [(ngModel)]="description"></textarea>
+                    </div>
+                    
+                    <span class="text-danger">*</span> Es requerido
+                </form>
+            </div>
+            <div class="col-md-6 ">
+                
+                <span class="text-danger p-1">*</span><label> Agregar Tallas</label>
+                <div class="form-row align-items-center">
+                    
+                    <div class="col-auto">
+                        <input class="form-control" placeholder="Ej: XL ó 42" name="size" [(ngModel)]="size">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-add-circle mb-6" (click)="addSize()">
+                          <i class="fas fa-plus p-1"></i>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                
+                <label>Tallas</label>
+                <div class="container-sizes p-2">
+                    <div *ngIf="arraySizes.length > 0">
+                        <div class="container-line-size p-2" *ngFor="let size of arraySizes">
+                            <div class="container-size p-2" [id]="size.size">
+                                <i class="fas fa-times delete-icon text-danger" (click)="delete(size.id)"></i>
+                               {{size.size}}
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <small *ngIf="arrayErr !== ''" class="text-danger">{{arrayErr}}</small>
+            </div>
+            
+        </div>
+    </div>
+</div>    
+
+
+
+  

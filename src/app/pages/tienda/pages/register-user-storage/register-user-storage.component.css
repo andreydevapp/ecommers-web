@@ -1,0 +1,46 @@
+.body{
+    padding-left: 150px;
+    padding-right: 150px;
+    
+}
+
+.container-fluid{
+    background-color: #f3f3f3;
+}
+
+.line{
+    cursor: pointer;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+label{
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.btn-negro{
+    border-radius: none !important;
+    background-color: #000000;
+    color: white;
+}
+
+.txt-secure{
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #008000;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 1.5px;
+    border-bottom: 0.5px dotted #008000;
+}
+
+.txt-err{
+    color: #ffa900 !important;
+}

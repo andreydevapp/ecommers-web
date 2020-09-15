@@ -1,0 +1,159 @@
+<div class="body-admin">
+
+    <div class="body-window p-4">
+
+
+        <div class=" p-2">
+            <span class="tittle-page">Productos</span><i class="far fa-question-circle help"></i><br>
+            <span class="sub-tittle">Puedes crear tallas para asigarselas cuando crees un producto. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+            <div class="line-gray"></div>
+            <button class="btn btn-admin btn-add" (click)="goAdd()">
+                <i class="fas fa-plus p-1"></i> Nuevo Producto
+            </button>
+        </div>
+        <br>
+    
+        <div class="card-conatiner">
+            <div class="card-header p-2">
+    
+                <div *ngIf="catagoriesData.length === 0" class="text-page">
+                    <span class="text-danger text-page">*</span> Sin cetegorias que mostrar <br>
+                    <hr *ngIf="this.typeSizesData.length == 0 && catagoriesData.length === 0">
+                    <span class="text-danger text-page">*</span> Para crear un <strong>nuevo producto</strong> primero debes de crear almenos una <strong class="text-primary" ><a routerLink="/admin77/manage_categories">categoria</a> </strong>   
+                </div>
+                <div class="p-2" *ngIf="this.typeSizesData.length == 0 && catagoriesData.length === 0"></div>
+                <div *ngIf="typeSizesData.length === 0" class="text-page">
+                    <span class="text-danger text-page">*</span> Para crear un <strong>nuevo producto</strong> primero debes de crear las <strong><a routerLink="/admin77/manage_sizes">tallas</a></strong> para asignarle a tus productos
+                </div>
+    
+                <div *ngIf="catagoriesData.length > 0 && this.typeSizesData.length > 0">
+    
+                    <div class="container-categories">
+                        <div class="container-dropdow p-1">
+                            <span class="text-page">
+                                Filtrar por categoria
+                            </span>
+                            <div class="line-gray"></div>
+                            <span class="p-1 text-page">
+                                Categoria:
+                            </span>
+                            <span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle text-page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="text-page" *ngIf="categorySelected.nameCategory === ''">
+                                            Ninguna seleccionada
+                                        </span>
+                                        <span class="text-page" *ngIf="categorySelected.nameCategory !== ''">
+                                            {{categorySelected.nameCategory}}
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu text-page">
+                                        <a class="dropdown-item text-page" *ngFor="let category of catagoriesData" (click)="categoryAccion(category.nameCategory, category._id)">{{category.nameCategory}}</a>
+                                        <a class="dropdown-item text-page" *ngIf="categorySelected.nameCategory !== ''" (click)="categoryAccion('', '')">
+                                            Ninguna
+                                        </a>
+                                    </div>
+                                </div>
+                            </span>
+                            
+                        </div>
+    
+                        <div class="container-dropdow p-2 text-page" *ngIf="categorySelected.nameCategory !== '' && subCategoryData.length > 0">
+                            <span class="p-1 text-page">
+                                Sub Categoria:
+                            </span>
+                            <span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle text-page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span class="text-page" *ngIf="subCategorySelected.nameCategory !== ''">{{subCategorySelected.nameCategory}}</span>
+                                      <span class="text-page" *ngIf="subCategorySelected.nameCategory === ''">
+                                          Ninguna seleccionada
+                                      </span>
+                                    </button>
+                                    <div class="dropdown-menu text-page">
+                                      <a class="dropdown-item" *ngFor="let subCategory of subCategoryData" (click)="subCategoryAccion(subCategory.nameCategory, subCategory._id)">
+                                        {{subCategory.nameCategory}}
+                                      </a>
+                                      <a *ngIf="subCategorySelected.nameCategory !== ''" class="dropdown-item" (click)="subCategoryAccion('','')">Ninguna</a>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                        
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+    
+        <br>
+    
+        <div class="card-conatiner">
+            <div class="card-grid p-2 text-page">
+                Todos los productos <span *ngIf="categorySelected.nameCategory !== ''">de la categoria <strong>{{categorySelected.nameCategory}}</strong></span> <span *ngIf="subCategorySelected.nameCategory !== ''"> / <strong>{{subCategorySelected.nameCategory}}</strong></span>
+            </div>
+            <ejs-grid [dataSource]='productsData' [allowSorting]="true" [allowPaging]="true" [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar' #gridCategory>
+                <e-columns>
+                    <e-column field='_id' headerText='ID' width=110 textAlign='Center' [visible]="false"></e-column>
+    
+                    <e-column field='code' headerText='Código' width=40 textAlign='Center'></e-column>
+    
+                    <e-column field='nameProduct' headerText='Nombre' width=60 textAlign='Center'></e-column>
+                    
+                    <e-column field='price' headerText='Precio' format="N2" width=40 textAlign='Center'
+                    ></e-column>
+                    <e-column field='discount' headerText='Descuento' width=50 textAlign='Center'></e-column>
+
+                    <e-column field='url' headerText='Categoria' width=50 textAlign='Center'></e-column>
+                    
+                    <e-column  headerText='Acciones' width=55 textAlign='Center'>
+                        <ng-template #template let-data>
+                            <span class="p-2 delete" (click)="alertToDelete(data._id,data.nameProduct)"><i class="fas fa-trash"></i></span>
+                            <span class="p-2 edit" (click)="editProduct(data._id)"><i class="fas fa-pencil-alt"></i></span>
+                            <span class="p-2 text-success view" (click)=" viewDetailProduct(data._id)"><i class="far fa-eye"></i></span>
+                        </ng-template>
+                    </e-column>
+                    
+                </e-columns>
+            </ejs-grid>
+        </div>
+    
+
+
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+          ¿Deseas eliminar el producto <strong>{{productToDelete}}</strong> permanentemente del sistema?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteProduct()">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Eliminar
+                </span>
+              
+            </button>
+        </div>
+      </div>
+    </div>
+</div> 

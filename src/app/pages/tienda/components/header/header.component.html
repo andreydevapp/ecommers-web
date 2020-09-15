@@ -1,0 +1,372 @@
+<!-- Vista pc -->
+<div class="superior-bar text-center">
+    <span>
+        ENVIO GRATIS. USE EL CÓDIGO: FREESHIP
+    </span>
+    <span class="span-p">
+        <button class="btn btn-shop-now">
+            COMPRAR AHORA
+        </button>
+    </span>
+    
+</div>
+<div class="info-bussines  text-center" id="info-bussines">
+    <div class="left-div">
+        <div class="login-container">
+            <span class="p-2 text-left">
+                <i class="fas fa-user-circle user-icon" data-toggle="modal" data-target="#exampleModalCenter"></i>
+            </span>
+        </div>
+        <span class="marca text-dark">
+            LOGO
+        </span>
+    </div>
+
+    <div class="search-container">
+        <div class="input-group md-form form-sm form-2 pl-0">
+            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Buscar aquí" aria-label="Search">
+            <div class="input-group-append">
+              <span class="input-group-text amber lighten-3" id="basic-text1">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="rigth-div">
+        <div class="dropdown-3">
+            <i class="fas fa-shopping-bag shop-icon" id="id-car-icon"></i>
+            <div class="red-circle">
+                0
+            </div>
+            <div class="dropdown-content-3">
+                <div class="head-car p-2">
+                    CARRITO DE COMPRA (0)
+                </div>
+                <div class="body-car p-2">
+                    SU CARRITO ESTA VACÍO
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header d-none d-md-block" id="header">
+    <div class="p-1"></div>
+    <div class="text-center">
+
+        <div *ngIf="imgIsLoad">
+            <li class="p-3 dropdown position-static">
+                <a class="nav-txt">Novedades</a>
+            </li>
+            <li class="p-3 dropdown position-static" *ngFor="let data of navData">
+                <a class="nav-txt">{{data.category}}</a>
+                <div class="dropdown-content">
+                    <div class="p-2"></div>
+                    <div class="row p-1 text-center">
+
+                        <div class="col-md-3">
+
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Los más vendidos</a></div>
+                            </div>
+                            <br>
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Oferta %</a></div>
+                            </div>
+                            <br>
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Recien llegados</a></div>
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-md-5 text-left">
+                            <div class="tittle text-left m-auto">
+                                Compra por categoria {{data.category}}
+                            </div>
+                            <div class="line-gray"></div>
+                            <div class="p-2"></div>
+                            <div class="row">
+                            
+                                <div class="col-md-3 subCateories-container" *ngFor="let subCategory of data.subCategories">
+                                    <span class="nav-txt" >
+                                        {{subCategory.nameCategory}}
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+
+                                <div class="col-md-6" *ngFor="let imgSubCategory of data.imgSubCategories; index as i">
+                                    <div class="nav-txt text-center nav-txt">
+                                        <img class="img-subcategory" [src]="imgSubCategory.imagenUrl" alt="">
+                                        <div class="p-2"></div>
+                                        {{imgSubCategory.nameCategory}}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="p-3 dropdown position-static">
+                <a class="nav-txt">Todos los productos</a>
+            </li>
+        </div>
+
+    </div>
+    <div class="p-1"></div>
+</div>
+
+
+
+
+
+<div class="header-min d-none d-md-block" id="header-min">
+     <div class="p-2"></div>
+    <div class="text-center">
+
+        <div *ngIf="imgIsLoad">
+            <li class="p-3 dropdown position-static">
+                <a class="nav-txt">Novedades</a>
+            </li>
+            <li class="p-3 dropdown position-static" *ngFor="let data of navData">
+                <a class="nav-txt">{{data.category}}</a>
+                <div class="dropdown-content">
+                    <div class="p-2"></div>
+                    <div class="row p-1 text-center">
+
+                        <div class="col-md-3">
+
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Los más vendidos</a></div>
+                            </div>
+                            <br>
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Oferta %</a></div>
+                            </div>
+                            <br>
+                            <div class="conatiner-ticekt w-75 m-auto">
+                                <div class="ticket"><span class="circle"></span><a class="ticket-txt">Recien llegados</a></div>
+                            </div>
+                            
+
+                        </div>
+                        <div class="col-md-5 text-left">
+                            <div class="tittle text-left m-auto">
+                                Compra por categoria {{data.category}}
+                            </div>
+                            <div class="line-gray"></div>
+                            <div class="p-2"></div>
+                            <div class="row">
+                            
+                                <div class="col-md-3 subCateories-container" *ngFor="let subCategory of data.subCategories">
+                                    <span class="nav-txt" >
+                                        {{subCategory.nameCategory}}
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+
+                                <div class="col-md-6" *ngFor="let imgSubCategory of data.imgSubCategories; index as i">
+                                    <div class="nav-txt text-center nav-txt">
+                                        <img class="img-subcategory" [src]="imgSubCategory.imagenUrl" alt="">
+                                        <div class="p-2"></div>
+                                        {{imgSubCategory.nameCategory}}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="p-3 dropdown position-static">
+                <a class="nav-txt">Todos los productos</a>
+            </li>
+        </div>
+
+    </div>
+    <div class="p-2"></div>
+    <div class="rigth-div">
+        <div class="dropdown-3">
+            <i class="fas fa-shopping-bag shop-icon" id="id-car-icon"></i>
+            <div class="red-circle text-center">
+                0
+            </div>
+            <div class="dropdown-content-3">
+                <div class="head-car p-2">
+                    CARRITO DE COMPRA (0)
+                </div>
+                <div class="body-car p-2">
+                    SU CARRITO ESTA VACÍO
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Vista movil -->
+<div class="header-movil d-none text-center">
+    <span class="marca-movil ">
+        LOGO
+    </span>
+
+    <div class="btn-menu btn" (click)="showMenu()">
+        <i *ngIf="asideMenuShow" class="fas fa-bars" style="color: #24ceff;"></i>
+        <i *ngIf="!asideMenuShow" class="fas fa-bars"></i>
+    </div>
+    
+    <div class="car-movil">
+        <i *ngIf="showContainterCar" style="color: #24ceff;" class="fas fa-shopping-bag shop-icon-movil" id="id-car-icon" (click)="showCar()"></i>
+        <i *ngIf="!showContainterCar" class="fas fa-shopping-bag shop-icon-movil" id="id-car-icon" (click)="showCar()"></i>
+        <div class="red-circle-movil">
+            10
+        </div>
+        <div class="car-container-movil p-2" id="car-container-movil">
+            <div class="head-car p-2">
+                CARRITO DE COMPRA (0)
+            </div>
+            <div class="body-car p-2">
+                SU CARRITO ESTA VACÍO
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<div class="aside-menu" id="aside-menu">
+    <div class="account">
+        <div class="nav-menu">
+            <i class="fas fa-user"></i> Registrarse
+        </div>
+        <div class="nav-menu">
+            <i class="fas fa-user-plus"></i> Crear Cuenta
+        </div>
+    </div>
+    <div>
+        <div class="nav-menu">
+            Nueva colección
+        </div>
+        <div class="nav-menu collapsible">
+            Colección para hombre
+            <i class="fas fa-caret-down icon-down"></i>
+        </div>
+        <div class="content">
+            <div class="nav-menu">
+                Camisas
+            </div>
+            <div class="nav-menu">
+                Camisetas
+            </div>
+            <div class="nav-menu">
+                Short
+            </div>
+            <div class="nav-menu">
+                Pantalones
+            </div>
+            <div class="nav-menu">
+                Chancletas
+            </div>
+            <div class="nav-menu">
+                Tenis
+            </div>
+        </div>
+        <div class="nav-menu collapsible">
+            Colección para mujer
+            <i class="fas fa-caret-down icon-down"></i>
+        </div>
+        <div class="content">
+            <div class="nav-menu">
+                Blusas
+            </div>
+            <div class="nav-menu">
+                Short
+            </div>
+            <div class="nav-menu">
+                Pantalones
+            </div>
+            <div class="nav-menu">
+                Sueteres
+            </div>
+            <div class="nav-menu">
+                Chancletas
+            </div>
+            <div class="nav-menu">
+                Tenis
+            </div>
+        </div>
+        <div class="nav-menu">
+            Todos los productos
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="header-modal text-center p-2">
+            <span>INICIAR SESIÓN</span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>  
+        <div class="modal-body">
+            <div class="text-center">
+                <label>Si tiene una cuenta con nosotros, inicie sesión.</label>
+            </div>
+            <br>
+          <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">
+                    <i class="fas fa-envelope"></i>
+                     Correo Electronico
+                </label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">
+                    <i class="fas fa-lock"></i>
+                    Contraseña
+                </label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div>
+                <label> Olvide mi contraseña</label>
+              </div>
+              <div class="p-1"></div>
+              <button type="submit" class="btn btn-primary w-100">REGISTRARSE</button>
+              <div class="p-1"></div>
+              <div class="text-center">
+                <label>Ó</label>
+              </div>
+              <div class="p-1"></div>
+              <button class="btn btn-black w-100" routerLink="/tienda/register" data-dismiss="modal" aria-label="Close">CREAR CUENTA</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+

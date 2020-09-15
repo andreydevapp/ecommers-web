@@ -1,0 +1,522 @@
+.body{
+    overflow-x: hidden;
+    
+}
+
+.container-fluid{
+    padding-left: 80px !important;
+    padding-right: 80px !important;
+}
+
+a{
+    text-decoration: none;
+}
+
+h2{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width: fit-content;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 33px;
+}
+
+li{
+    padding: 0 !important;
+}
+
+.img-carrusel-1{
+    height: 700px;
+}
+
+
+.descount-container{
+    background-image: url("../../../../../assets/offer.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+    width: 100%;
+}
+
+.container-span{
+    -webkit-box-shadow: 0px 1px 13px -6px rgba(0,0,0,0.76);
+    -moz-box-shadow: 0px 1px 13px -6px rgba(0,0,0,0.76);
+    box-shadow: 0px 1px 13px -6px rgba(0,0,0,0.76);
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+.line-rigth{
+    border-right: 0.5px solid #e8e8e8;
+}
+
+.icon-span{
+    font-size: 36px;
+    color:#95a7cf;
+}
+
+.poppis{
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.img-carrusel{
+    height: 600px;
+}
+
+.img-promotion{
+    width: 100%;
+    height: 600px;
+}
+
+.circle{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: brown;
+    overflow: hidden;
+    margin: auto;
+    border: 5px #f5d4cc solid;
+    cursor: pointer;
+}
+
+.container-categpry{
+   
+}
+
+.ocasion-item{
+    
+    width: fit-content;
+}
+
+.ocasion-item:hover{
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.ocasion-container-movil:hover{
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.img-circle{
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.txt-category{
+    font-family: 'Dancing Script', cursive;
+    font-weight: 500;
+    font-size: 55px;
+    position: relative;
+    top: -25px;
+    z-index: 2;
+    width: fit-content !important;
+    color: black !important;
+    
+}
+
+.txt-tittle-category{
+    cursor: pointer;
+    line-height: 30px;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.subrayado{
+    background-color: #f5d4cc;
+    height: 5px;
+    position: relative;
+    top: -40px;
+}
+
+
+.line{
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+.line-rigth{
+    padding-right: 50px;
+}
+
+.line-left{
+    padding-left: 50px;
+}
+
+.card-category{
+    cursor: pointer;
+    background-color: #f9f9f9;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    width: 95%;
+    
+}
+
+.card-category:hover{
+    filter:  grayscale(30%);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(255,215,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(255,215,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(255,215,0,0.75);
+}
+
+
+.img-category{
+    width: 100%;
+    height: 305px;
+}
+
+
+.buy-by-category-txt{
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+    font-family: 'PT Serif', serif;
+}
+
+.category-txt{
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+    font-family: 'PT Serif', serif;
+}
+
+.img-mancha{
+    position: absolute;
+    right: 3%;
+    width: 250px;
+    height: 250px;
+    margin-top: -70px;
+}
+
+.owl-carousel {
+    display: flex;
+    overflow: visible;
+}
+
+.owl-carousel .owl-item img {
+    width: auto;
+    height: 100%;
+}
+
+.item-carrusel{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.prev-slide{
+    z-index: 10;
+    position: absolute;
+}
+
+
+.prev-slide-btn{
+    position: absolute !important;
+}
+
+
+.btn-all-ocasion{
+    position: absolute;
+    bottom: 5%;
+    left: 47%;
+    transform: translate(-47%, -47%);
+    -webkit-transform: translate(-47%, -47%);
+    margin: auto;
+    border: 4px black solid;
+    background-color: transparent;
+    letter-spacing: 1px;
+    font-family: 'PT Serif', serif;
+    font-size: 22px;
+    color: black;
+}
+
+.pad-2{
+    width: 90% !important;
+}
+
+.img-offer{
+    width: 100%;
+    margin: auto;
+    height: 650px;
+    cursor: pointer;
+}
+
+.img-offer:hover{
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+/*
+
+@ media querys
+
+*/
+
+
+@media (max-width: 1200px) {
+  
+    .img-buy-by-category{
+        width: 75% !important;
+    }
+    .container-fluid{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .img-category{
+        width: 100%;
+        height: 355px;
+    }
+    .container-span{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .pad-2{
+        width: 90% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .img-carrusel-1{
+        height: 500px !important;
+    }
+    .circle{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: brown;
+        overflow: hidden;
+        margin: auto;
+        border: 5px #e8eef2 solid;
+        cursor: pointer;
+    }
+    .category-txt{
+        font-size: 24px;
+    }
+}
+
+/* 
+  ##Dispositivo = Tablets, Ipads (horizontal)
+  ##Resolucion = B/w 768px to 1024px
+*/
+
+@media (max-width: 992px) {
+    .ocasion-container{
+        display: none !important;
+    }
+    .img-buy-by-category{
+        width: 75% !important;
+    }
+    .container-fluid{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .img-category{
+        width: 100%;
+        height: 355px;
+    }
+    .container-span{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .pad-2{
+        width: 90% !important;
+    }
+    .img-carrusel-1{
+        height: 500px !important;
+    }
+    .circle{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: brown;
+        overflow: hidden;
+        margin: auto;
+        border: 5px #e8eef2 solid;
+        cursor: pointer;
+    }
+
+    .category-txt{
+        font-size: 21px;
+    }
+
+    .ocasion-container-movil{
+        width: 100%;
+        display: block !important;
+    }
+
+
+    .btn-all-ocasion-movil{
+        margin: auto;
+        border: 4px #e5aba1 solid;
+        background-color: #e5aba1;
+        letter-spacing: 1px;
+        font-family: 'PT Serif', serif;
+        font-size: 16px;
+        color: white;
+    }
+
+    .ocasion-carrusel-movil-container{
+        background-image: url("../../../../../assets/ocasion-carrusel-movil.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 350px;
+        margin: auto;
+    }
+    
+    .circle{
+        width: 200px;
+        height: 200px;
+        
+    }
+
+    .txt-category{
+        font-size: 55px;
+    }
+}
+
+/* 
+  ##Dispositivo = Tablets de baja resolucion y telefnos Mobiles (horizontal)
+  ##Resolucion = B/w 481px to 767px
+*/
+
+@media (max-width: 768px) {
+    .ocasion-container{
+        display: none !important;
+    }
+    .img-buy-by-category{
+        width: 75% !important;
+    }
+    .container-fluid{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .img-category{
+        width: 100%;
+        height: 355px;
+    }
+    .line-rigth{
+        border-right: none;
+        border-bottom: 0.5px solid #e8e8e8 !important;
+    }
+    .container-span{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .pad-2{
+        width: 90% !important;
+    }
+    .img-carrusel-1{
+        height: 400px !important;
+    }
+
+    .category-txt{
+        font-size: 18px;
+    }
+
+    .br{
+        display: block !important;
+    }
+}
+
+/* 
+  ##Dispositivo = Mayoria de telefonos moviles (vertical)
+  ##Resolucion = B/w 320px to 479px
+*/
+
+@media (max-width: 576px) {
+    .ocasion-container{
+        display: none !important;
+    }
+    .img-buy-by-category{
+        width: 85% !important;
+    }
+    .container-fluid{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .img-category{
+        width: 100%;
+        height: 365px;
+    }
+    .line-rigth{
+        border-right: none;
+        border-bottom: 0.5px solid #e8e8e8 !important;
+    }
+    .container-span{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .pad-2{
+        width: 90% !important;
+    }
+    .img-carrusel-1{
+        height: 400px !important;
+    }
+    .img-category{
+        width: 100%;
+        height: 155px;
+    }
+
+    .category-txt{
+        font-size: 16px;
+    }
+
+    .ocasion-container-movil{
+        width: 100%;
+        display: block !important;
+    }
+
+    
+
+    .btn-all-ocasion-movil{
+        margin: auto;
+        border: 4px #e5aba1 solid;
+        background-color: #e5aba1;
+        letter-spacing: 1px;
+        font-family: 'PT Serif', serif;
+        font-size: 16px;
+        color: white;
+    }
+
+    .ocasion-carrusel-movil-container{
+        background-image: url("../../../../../assets/ocasion-carrusel-movil.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 350px;
+        margin: auto;
+    }
+    
+    .circle{
+        width: 170px;
+        height: 170px;
+        
+    }
+
+    .txt-category{
+        font-size: 45px;
+    }
+
+    .img-offer{
+        height: 500px;
+    }
+
+    .br{
+        display: block !important;
+    }
+}

@@ -1,0 +1,92 @@
+<div class="body-admin p-4">
+    
+    <div class=" p-2">
+        <span class="tittle-page">Nueva sub Categoría</span><i class="far fa-question-circle help"></i><br>
+        <span class="sub-tittle">Utiliza las categorías para clasificar tus productos y ubicarlos fácilmente. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+        <div class="line-gray" routerLink="/admin77/manage_categories/add"></div>
+        <button class="btn-admin btn-add btn" (click)="validate()" id="btn-add">
+            <span>
+                <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </span>
+            <span>
+                Crear Sub Categoria
+            </span>
+            
+        </button>
+    </div>
+    <br>
+
+    <div class="row p-3">
+        <div class="col-md-9">
+
+            <div class="row container-form ">
+                <div class="col-md-6 line-rigth">
+                    <form>
+                        <div class="form-group">
+                          <span class="text-danger p-1 text-page">*</span><label class="text-page"> Nombre de la sub categoria</label>
+                          <input class="form-control" placeholder="" [(ngModel)]="nameCategory" name="nameCategory">
+                          <small *ngIf="nameErr !== ''" class="text-danger text-page">{{nameErr}}</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-page">Descipción</label>
+                            <textarea type="text" class="form-control" rows="3" [(ngModel)]="description" name="description"></textarea>
+                        </div>
+                        
+                        <span class="text-danger text-page">*</span><label class="text-page"> Es requerido</label>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <span class="text-page">Imagen de la sub categoria</span>
+                    <br>
+                    <br>
+                    <div class="img-container p-2">
+                        <input type="file" accept="image/*" class="d-none" (change)='onImgSelected($event)' #imgInput>
+                        <img [src]="photoSelected || '../../../../../../assets/add-picture.png'" alt="noimage" class="add-picture-easy"   (click)='imgInput.click()'>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="container-form text-center text-page">
+                Categoria Padre
+                <div class="p-2 text-left" >
+                    
+                    <div class="form-check">
+                        <div *ngFor="let category of categoryData">
+                            <input class="form-check-input" type="checkbox" value="" [id]="category._id" (click)="categoryCheck(category._id, category.nameCategory)">
+                            <label class="form-check-label text-page" [for]="category._id">
+                                {{category.nameCategory}}
+                            </label>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>    
+
+
+
+<div class="modal fade" id="modalAlertAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+            Para crear una nueva <strong>sub categoria</strong> primero debes de <strong>seleccionar la catogria padre</strong> en donde vas a gregar la nueva sub categoria
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

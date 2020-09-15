@@ -1,0 +1,254 @@
+<div class="body-admin">
+
+    <div class="body-window p-4">
+
+
+        <div class=" p-2">
+            <span class="tittle-page">Detalle Producto: {{nameProduct}}</span><i class="far fa-question-circle help"></i><br>
+            <span class="sub-tittle">Puedes ver, crear y eliminar los detalles del producto {{nameProduct}}<br>Puedes agregar imagenes a este producto así como los colores y tallas disponibles del producto <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+            <div class="line-gray" ></div>
+            <button class="btn btn-admin btn-add" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
+                <i class="fas fa-plus p-1"></i> Agregar Detalle
+            </button>
+        </div>  
+        <br>
+    
+        <div class="card-conatiner">
+            <div class="card-grid p-2 text-page">
+                Detalle Producto: {{nameProduct}}
+            </div>
+            <ejs-grid [dataSource]='productsData' [allowSorting]="true" [allowPaging]="true" [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar' #gridCategory>
+                <e-columns>
+                    <e-column field='_id' headerText='ID' width=110 textAlign='Center' [visible]="false"></e-column>
+
+                    <e-column field= "images.mainImagen.imagenUrl" headerText="Imagen Principal" textAlign='Center' width="65">
+                        <ng-template #template let-data>
+                            <img class="img-product" [src]="data.images.mainImagen.imagenUrl" alt=""/>
+                        </ng-template>
+                    </e-column>
+
+                    <e-column headerText="Imagenes secundarias" textAlign='Center' width="135">
+                        <ng-template #template let-data>
+                            <div class="p-2 d-inline-block img-secundary-container" *ngFor="let imagen of data.images.secundaryImages">
+                                <img class="img-product-secundary" [src]="imagen.imagenUrl" alt=""/>
+                            </div>
+                        </ng-template>
+                    </e-column>
+
+                    <e-column field='quantityInStock' headerText='Stock' textAlign='Center' width=45 textAlign='Center'
+                    ></e-column>
+    
+                    <e-column headerText='Tallas' textAlign='Center' width=40 textAlign='Center'>
+            
+                        <ng-template #template let-data>
+                            <span *ngFor="let size of data.size.sizes; index as i">
+                                <span *ngIf="data.size.sizes.length === i+1">
+                                     {{size.size}}
+                                </span>
+                                <span *ngIf="data.size.sizes.length !== i+1">
+                                    {{size.size}},
+                                </span>
+                            </span>
+                        </ng-template>
+        
+                    </e-column>
+
+                    <e-column headerText='Color' textAlign='Center' width=30 textAlign='Center'>
+            
+                        <ng-template #template let-data>
+                            <div class="circle-color" [ngStyle]="{'backgroundColor': data.color }">
+                            </div>
+                        </ng-template>
+        
+                    </e-column>
+                    
+                    <e-column  headerText='Acciones' width=45 textAlign='Center'>
+                        <ng-template #template let-data>
+                            <span class="p-2 delete" (click)="alertToDelete(data._id)"><i class="fas fa-trash"></i></span>
+                        </ng-template>
+                    </e-column>
+                    
+                </e-columns>
+            </ejs-grid>
+        </div>
+    
+
+
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+          ¿Deseas eliminar el producto <strong>{{productToDelete}}</strong> permanentemente del sistema?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteProduct()">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Eliminar
+                </span>
+              
+            </button>
+        </div>
+      </div>
+    </div>
+</div>
+ 
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="newDetailModal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+
+
+        <div class="modal-body body-window">
+          
+            <div class="row p-2">
+                <div class="col-md-3">
+    
+                    <div class="text-center text-page">
+                        <span>Imagenes del producto</span>
+                    </div>
+                    <div class="line-gray"></div>
+                    <br>
+                    <div class="p-2 img-container">
+                        <input type="file" accept="image/*" class="d-none" (change)='onImgSelected($event)' #imgInput>
+                        <img [src]="photoSelected || '../../../../../../assets/add-picture.png'" alt="noimage" class="img-p"   (click)='imgInput.click()'>
+                    </div>
+
+
+                    <br><br>
+                    <div class="row" *ngIf="file">
+                    
+                        <ng-container *ngIf="photoSelectedArray.length > 0">
+                            <div class="col-md-4 secundary-img-conatiner" *ngFor="let imgSecundary of photoSelectedArray">
+                                <input type="file" accept="image/*" class="d-none" (change)='onImgsSelected($event)' #imgsInput>
+                                <img [src]="imgSecundary" alt="noimage" class="secundary-img" (click)='imgsInput.click()'>
+                                <div></div>
+                            </div>
+                        </ng-container>
+                    
+                        <div class="col-md-4 secundary-img-conatiner" *ngIf="photoSelectedArray.length < 3">
+                            <input type="file" accept="image/*" class="d-none" (change)='onImgsSelected($event)' #imgsInput>
+                            <img [src]="'../../../../../../assets/add-picture.png'" alt="noimage" class="secundary-img"   (click)='imgsInput.click()'>
+                            <div></div>
+                        </div>
+                        
+                    </div>
+                
+                </div>
+                <div class="col-md-9">
+
+
+                    <div class="card-conatiner lines-border p-2">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form>
+                                    <div class="form-group"> 
+                                      <label class="text-page"><span class="text-danger ">*</span> Cantidad en stock</label>
+                                      <input [(ngModel)]="payloadProduct.quantityInStock" name="name" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Cantidad en stock">
+                                    </div>
+                                </form>   
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-page"><span class="text-danger ">*</span> Color del producto</label><br>
+                                <input ejs-colorpicker type="color" id="element" mode="Palette"  [(ngModel)]="color"/>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <br>
+    
+                    <div class="card-conatiner lines-border">
+                        <div class="p-1">
+                            <div class="text-center text-page">
+                                Tallas
+                            </div>
+                            <div class="line-gray"></div>
+
+                            <div class="p-1">
+    
+                                <label class="text-page d-inline-block p-1"><span class="text-danger">*</span> Tipo de talla</label>
+                                <div class="dropdown d-inline-block p-1">
+                                    <button class="btn btn-admin-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="text-page" *ngIf="typeSizeSelected.typeProduct === ''">
+                                            Tipo de talla
+                                        </span>
+                                        <span class="text-page" *ngIf="typeSizeSelected.typeProduct !== ''">
+                                            {{typeSizeSelected.typeProduct}}
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a  class="dropdown-item text-page" *ngFor="let typeSize of typeSizesData" (click)="typeSizeAccion(typeSize._id,typeSize.typeProduct)">{{typeSize.typeProduct}}</a>
+                                    </div>
+                                </div>
+                                <small class="text-danger text-page" *ngIf="sizeErr !== ''">{{sizeErr}}</small>
+    
+                                
+                            </div>
+                            
+                            <div *ngIf="sizesData.length > 0" class="p-2">
+                                <label class="text-page">Selecciona las tallas disponibles para este producto</label> 
+                                <div class="container-sizes p-2">
+                                    <div class="container-line-size p-2" *ngFor="let size of sizesData">
+                                        <div class="container-size p-2" (click)="sizeAction(size._id,size.size,size.description)" [id]="size.size">
+                                           {{size.size}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                           
+    
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    
+    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="validateProduct()" id="btn-add">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinnerSave" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Guardar Detalle
+                </span>
+            </button>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+

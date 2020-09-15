@@ -1,0 +1,97 @@
+<div class="body-admin">
+
+    <div class="conatiner p-4">
+        <div class=" p-2">
+            <span class="tittle-page">Sub Categorías</span><i class="far fa-question-circle help"></i><br>
+            <span class="sub-tittle">Utiliza las Sub categorías para clasificar tus productos y ubicarlos fácilmente. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+            <div class="line-gray"></div>
+            <button class="btn-admin btn-add btn" routerLink="add">
+                <i class="fas fa-plus p-1"></i> Crear Sub Categoria
+            </button>
+        </div>
+
+        <br>
+        <div class="p-2">
+    
+            <div class="card-conatiner">                
+                <ejs-grid [dataSource]='subCategoriasData' [allowSorting]="true" [allowPaging]="true" [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar' >
+                    <e-columns>
+                        <e-column field='_id' headerText='ID' width=110 textAlign='Center' [visible]="false"></e-column>
+                        <e-column field= "imagenUrl" headerText="Imagen" textAlign='Center' width="55">
+                            <ng-template #template let-data>
+                                <img class="img-grid" *ngIf="data.imagenUrl !== ''" [src]="data.imagenUrl" alt="{{data.imagenUrl}}"/>
+                                <img *ngIf="data.imagenUrl == ''" class="img-grid" src="../../../../../assets/interface.png" alt=""/>
+                            </ng-template>
+                        </e-column>
+                        <e-column field='nameCategory' headerText='Nombre Sub Categoria' textAlign='Center' width=100 textAlign='Center' [validationRules]='costRulesSubCategory'></e-column>
+                        <e-column field='nameCategoryFather' headerText='Categoria Padre' textAlign='Center' width=100 textAlign='Center' [validationRules]='costRulesSubCategory'></e-column>
+                        <e-column field='quantityProducts' headerText='Productos' width=60 textAlign='Center' [allowEditing]="false"></e-column>
+                        <e-column field='description' headerText='Descripción' width=190 textAlign='Center'></e-column>
+                        <e-column  headerText='Acciones' width=60 textAlign='Center'>
+                            <ng-template #template let-data>
+                                <span class="p-2 delete" (click)="openModalDelete(data._id,data.nameCategory)"><i class="fas fa-trash"></i></span>
+                                <span class="p-2 edit" (click)="editSubCategory(data._id)"><i class="fas fa-pencil-alt"></i></span>
+                            </ng-template>
+                        </e-column>
+                    </e-columns>
+                </ejs-grid>
+            </div>
+        </div>
+        <br><br>
+
+        
+    </div>
+
+    
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+          ¿Deseas eliminar la categoria <strong>{{categoryToDelete}}</strong> permanentemente del sistema?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteCategory()">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Eliminar
+                </span>
+              
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="modalAlertAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+            Para crear una nueva <strong>sub categoria</strong> primero debes de <strong>seleccionar la catogria</strong> en donde vas a gregar la nueva sub categoria
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

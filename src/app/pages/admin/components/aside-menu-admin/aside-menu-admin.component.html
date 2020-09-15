@@ -1,0 +1,72 @@
+<div class="aside-menu">
+    <div class="p-4 marca text-center w-100">
+        Logo
+    </div>
+
+    
+
+
+    <div *ngFor="let navItem of navData">
+        <div class="nav p-3" *ngIf="navItem.urls.length === 0">
+            <i [class]="navItem.urlFather.icon + ' p-1'"></i> {{navItem.urlFather.name}}
+        </div>
+
+        <div class="nav" id="acc_iventory" *ngIf="navItem.urls.length > 0">
+            <div class="accordion p-3" (click)="accIventoryActive(navItem.urlFather.name+'up',navItem.urlFather.name+'down')" id="btn_acc_iventory">
+                <i [class]="navItem.urlFather.icon + ' p-1'"></i> {{navItem.urlFather.name}}
+                <i class="fas fa-caret-up icon-drop d-none" [id]="navItem.urlFather.name+'up'"></i>
+                <i class="fas fa-caret-down icon-drop" [id]="navItem.urlFather.name+'down'"></i>
+            </div>
+            
+            <div class="panel" id="panel">
+                <div class="p-1"></div>
+
+                <div *ngFor="let itemSon of navItem.urls" class="sub-nav" [routerLink]="itemSon.url" [id]="itemSon.name" (click)="subNavActive('caret'+itemSon.name, itemSon.name)">
+                    <i [class]="itemSon.icon + ' p-1'"></i> {{itemSon.name}}
+                    <i class="fas fa-caret-left icon-caret d-none" [id]="'caret'+itemSon.name"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="nav p-3">
+        <i class="fas fa-palette p-1"></i> Colores
+    </div>
+
+
+    
+    
+
+    <!-- <div class="nav" id="acc_iventory">
+        <div class="accordion p-3" (click)="accIventoryActive()" id="btn_acc_iventory">
+            <i class="fas fa-boxes p-1"></i> Inventario
+        </div>
+        
+        <div class="panel">
+            <div class="p-1"></div>
+            <div class="sub-nav" routerLink="/admin77/manage_categories" id="categoria" (click)="active('categoria')">
+                <i class="fas fa-folder p-1"></i> Categorias
+            </div>
+            <div class="sub-nav" routerLink="/admin77/manage_sub_categories" id="sub_categoria" (click)="active('categoria')">
+                <i class="fas fa-folder p-1"></i> Sub Categorias
+            </div>
+            
+            <div class="sub-nav" routerLink="/admin77/manage_products" id="productos" (click)="active('productos')">
+                <i class="fas fa-tshirt p-1"></i> Productos
+            </div>
+
+            <div class="sub-nav" routerLink="/admin77/manage_brands" id="marcas" (click)="active('marcas')">
+                <i class="fas fa-stamp p-1"></i> Marcas
+            </div>
+            <div class="sub-nav" routerLink="/admin77/manage_sizes" id="tallas" (click)="active('tallas')">
+                <i class="fas fa-ruler-horizontal p-1"></i> Tallas
+            </div>
+        </div>
+    </div> -->
+    
+    
+    <div class="nav p-3">
+        <i class="fas fa-dollar-sign p-1 "></i> Ventas
+    </div>
+</div>

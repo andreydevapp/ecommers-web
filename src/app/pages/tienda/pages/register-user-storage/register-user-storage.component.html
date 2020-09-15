@@ -1,0 +1,53 @@
+<br>
+<div class="body">
+    <div class="container-fluid p-4">
+
+        <div class="txt-secure">
+            <span >
+                <i class="fas fa-lock"></i> Autenticación Segura
+            </span>
+        </div>
+        <br>
+        <div class="line">
+            <span >
+                Crear una cuenta
+            </span>
+        </div>
+        
+        <hr>
+        
+        <section class="text-left">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre Completo</label>
+                    <input type="text" class="form-control" id="exampleInputName" aria-describedby="" placeholder="Ingresa tu Nombre Completo" name="name" [(ngModel)]="name">
+                    <small *ngIf="err1 !== ''" class="form-text text-muted txt-err">{{err1}}</small>
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Dirección de correo electrónico</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo" name="email" [(ngModel)]="email">
+                  <small *ngIf="err2 !== ''" class="form-text text-muted txt-err">{{err2}}</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name="pass1" [(ngModel)]="pass1">
+                  <small *ngIf="err3 !== ''" class="form-text text-muted txt-err">{{err3}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Ingresa tu contraseña" name="pass2" [(ngModel)]="pass2">
+                    <small *ngIf="err3 !== ''" class="form-text text-muted txt-err">{{err3}}</small>
+                  </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check" [(ngModel)]="check">
+                  <label class="form-check-label" for="exampleCheck1">Al continuar y abrir una cuenta, usted acepta los Términos y condiciones de Select Fashion y las Políticas de privacidad.</label>
+                </div>
+                <small *ngIf="err4 !== ''" class="form-text text-muted txt-err">{{err4}}</small>
+                <div class="p-2"></div>
+                <button type="submit" class="btn btn-negro" (click)="validate()"><i class="fas fa-user"></i> CREAR CUENTA</button>
+            </form>
+        </section>
+        
+
+    </div>
+</div>

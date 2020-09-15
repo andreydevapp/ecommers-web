@@ -1,0 +1,67 @@
+<div class="body-admin p-4">
+    <div class=" p-2">
+        <span class="tittle-page">Marcas</span><i class="far fa-question-circle help"></i><br>
+        <span class="sub-tittle">Puedes crear marcas por si necesitas especificar en tus productos que marca son. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+        <div class="line-gray"></div>
+        <button routerLink="/admin77/manage_brands/add" class="btn-admin btn-add btn">
+            <i class="fas fa-plus p-1"></i> Crear Marca
+        </button>
+    </div>
+    <br>
+
+    <div class="card-conatiner">
+        <ejs-grid [dataSource]='brandData' [allowSorting]="true" [allowPaging]="true" [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar' #gridCategory>
+            <e-columns>
+                <e-column field='_id' headerText='ID' width=110 textAlign='Center' [visible]="false"></e-column>
+                <e-column field= "imagenUrl" headerText="Imagen" textAlign='Center' width="55">
+                    <ng-template #template let-data>
+                        <img class="img-grid" *ngIf="data.imagenUrl !== ''" [src]="data.imagenUrl" alt="{{data.imagenUrl}}"/>
+                        <img *ngIf="data.imagenUrl == ''" class="img-grid" src="../../../../../assets/interface.png" alt=""/>
+                    </ng-template>
+                </e-column>
+                <e-column field='nameBrand' headerText='Marca' width=200 textAlign='Center' [validationRules]='costRules'
+                ></e-column>
+                <e-column field='description' headerText='Descripción' width=200 textAlign='Center' [validationRules]='costRules'
+                ></e-column>
+                <e-column  headerText='Acciones' width=55 textAlign='Center'>
+                    <ng-template #template let-data>
+                        <span class="p-2 delete" (click)="alertTodelete(data._id, data.nameBrand)"><i class="fas fa-trash"></i></span>
+                        <span class="p-2 edit" (click)="edit(data._id)"><i class="fas fa-pencil-alt"></i></span>
+                    </ng-template>
+                </e-column>
+            </e-columns>
+        </ejs-grid>
+    </div>
+    <br><br>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLabel">!Alerta¡</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body txt-modal">
+          ¿Deseas eliminar la marca <strong>{{brandToDelete}}</strong> permanentemente del sistema?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteBrand()">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Eliminar
+                </span>
+              
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>

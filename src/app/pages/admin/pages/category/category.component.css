@@ -1,0 +1,92 @@
+
+.message{
+    background-color: #00535e;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.span2{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.cate-txt{
+    font-size: 40px;
+    font-weight: 600;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-conatiner{
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-header{
+    border-top: 0.5px solid #d0d0d0;
+    border-left: 0.5px solid #d0d0d0;
+    border-right: 0.5px solid #d0d0d0;
+    background-color: white;
+}
+
+.card-body{
+    border-bottom: 0.5px solid #d0d0d0;
+    border-left: 0.5px solid #d0d0d0;
+    border-right: 0.5px solid #d0d0d0;
+    background-color: white;
+}
+
+
+/*Product css*/
+.product-container{
+    border: 0.5px solid #d0d0d0;
+    text-align: center;
+}
+
+.img-product{
+    height: 100px !important;
+}
+
+.product-body{
+    font-size: 10px;
+    font-weight: 400;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sub-product-body{
+    font-size: 13px;
+    font-weight: 400;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.e-toolbar{ 
+    background-color:#00535e !important; 
+} 
+
+.edit{
+    color: #4a90e2; 
+    cursor: pointer;
+}
+
+.delete{
+    color: rgb(231, 76, 48);
+    cursor: pointer;
+}
+
+.spinner{
+    width: 20px;
+    height: 20px;
+}

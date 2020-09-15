@@ -1,0 +1,221 @@
+
+<div class="body-admin">
+    <div class="body-window p-4">
+
+        <div class=" p-2">
+            <span class="tittle-page">Nuevo Producto</span><i class="far fa-question-circle help"></i><br>
+            <span class="sub-tittle">Puedes crear tallas para asigarselas cuando crees un producto. <strong class="text-dark"><a routerLink="/" class="view-more">Ver más</a></strong></span>
+            <div class="line-gray"></div>
+            <button class="btn btn-admin btn-add" (click)="validateProduct()" id="btn-add">
+                <span>
+                    <div class="spinner-border text-light spinner d-none" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </span>
+                <span>
+                    Crear Producto
+                </span>
+            </button>
+        </div>
+        <br>
+
+        <div class="card-conatiner">
+            <div class="card-header p-2">
+    
+                <div >
+                    <span class="text-page p-2">
+                        Selecciona la categoria o sub categoria en donde guardaras el producto
+                    </span>
+                    <div class="line-gray"></div>
+                    <div class="container-categories">
+                        <div class="container-dropdow p-2">
+                            <span class="text-page p-1">
+                                Categoria:
+                            </span>
+                            <span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="text-page" *ngIf="product.categorySelected.nameCategory === ''">
+                                            Ninguna seleccionada
+                                        </span>
+                                        <span class="text-page" *ngIf="product.categorySelected.nameCategory !== ''">
+                                            {{product.categorySelected.nameCategory}}
+                                        </span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" *ngFor="let category of catagoriesData" (click)="categoryAccion(category.nameCategory, category._id)">{{category.nameCategory}}</a>
+                                        <a class="dropdown-item" *ngIf="product.categorySelected.nameCategory !== ''" (click)="categoryAccion('', '')">
+                                            Ninguna
+                                        </a>
+                                    </div>
+                                </div>
+                            </span>
+                            
+                        </div>
+    
+                        <div class="container-dropdow p-2" *ngIf="product.categorySelected.nameCategory !== ''">
+                            <span class="p-1 text-page">
+                                Sub Categoria:
+                            </span>
+                            <span>
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle text-page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span class="text-page" *ngIf="product.subCategorySelected.nameCategory !== ''">{{product.subCategorySelected.nameCategory}}</span>
+                                      <span class="text-page" *ngIf="product.subCategorySelected.nameCategory === ''">
+                                          Ninguna seleccionada
+                                      </span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item text-page" *ngFor="let subCategory of subCategoryData" (click)="subCategoryAccion(subCategory.nameCategory, subCategory._id)">
+                                        {{subCategory.nameCategory}}
+                                      </a>
+                                      <a *ngIf="product.subCategorySelected.nameCategory !== ''" class="dropdown-item text-page" (click)="subCategoryAccion('','')">Ninguna</a>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+        
+                </div>
+
+            </div>
+            
+        </div>
+    
+        <br> 
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-conatiner lines-border p-3">
+
+                    <form>
+                        
+                        <div class="form-row">
+                            <div class="col-7">
+                                <label class="text-page"><span class="text-danger ">*</span> Nombre</label>
+                                <input [(ngModel)]="product.nameProduct" name="name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nombre del producto">
+                                <small class="text-danger" *ngIf="nameErr !== ''">{{nameErr}}</small>
+                            </div>
+                            <div class="col">
+                                <label class="text-page"><span class="text-danger">*</span> Código</label>  
+                                <input [(ngModel)]="product.code" type="text" class="form-control" placeholder="Código del producto" name="code" >
+                                <small class="text-danger" *ngIf="codeErr !== ''">{{codeErr}}</small>
+                            </div>
+                        </div>
+        
+                        <div class="p-2"></div>
+                        <div class="form-row">
+                            <div class="col-7">
+                              <label class="text-page"><span class="text-danger">*</span> Precio</label>  
+                              <input [(ngModel)]="product.price" type="number" class="form-control" placeholder="Precio del producto" name="price">
+                              <small class="text-danger" *ngIf="priceErr !== ''">{{priceErr}}</small>
+                            </div>
+                            <div class="col">
+                              <label class="text-page">Descuento</label>  
+                              <input [(ngModel)]="product.discount" type="number" class="form-control" placeholder="Descuento del producto" name="desc">
+                            </div>
+                        </div>
+                        <div class="p-2"></div>
+                        <label class="text-page">Descripción</label>
+                        <textarea [(ngModel)]="product.description" name="desc" type="text" class="form-control" rows="2" placeholder="Descripción del producto"></textarea>
+                                 
+                    </form> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                
+                <div class="">
+                    <div class="card-conatiner lines-border p-1">
+                        <div class="text-center text-page">
+                            Marca del producto
+                        </div>
+                        <div class="line-gray"></div>
+                        
+                        <div class="p-2">
+                            <div class="form-check">
+                                <div *ngFor="let brand of brandData" class="text-page">
+                                    <div *ngIf="brand._id === '5ebca6684ecbde38442b7c69'">
+                                        <input class="form-check-input" type="checkbox" value="" [id]=" brand._id" (click)="brandSelectedAccion(brand._id, brand.nameBrand)" checked>
+                                        <label class="form-check-label" [for]="brand._id">
+                                            {{brand.nameBrand}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngFor="let brand of brandData" class="text-page">
+                                    <div *ngIf="brand._id !== '5ebca6684ecbde38442b7c69'">
+                                        <input class="form-check-input" type="checkbox" value="" [id]=" brand._id" (click)="brandSelectedAccion(brand._id, brand.nameBrand)">
+                                        <label class="form-check-label" [for]="brand._id">
+                                            {{brand.nameBrand}}
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="">
+                    <div class="card-conatiner lines-border p-1">
+                        <div class="text-center text-page">
+                            Tipo de ocación
+                        </div>
+                        <div class="line-gray"></div>
+                        
+                        <div class="p-2">
+                            <div class="form-check">
+                                <div *ngFor="let ocasion of ocasionsData" class="text-page">
+                                    <div *ngIf="ocasion._id === '5ec01296781f295258425a64'">
+                                        <input class="form-check-input" type="checkbox" value="" [id]="ocasion._id" (click)="ocasionSelectedAccion(ocasion._id, ocasion.type)" checked>
+                                        <label class="form-check-label" [for]="ocasion._id">
+                                            {{ocasion.type}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngFor="let ocasion of ocasionsData" class="text-page">
+                                    <div *ngIf="ocasion._id !== '5ec01296781f295258425a64'">
+                                        <input class="form-check-input" type="checkbox" value="" [id]="ocasion._id" (click)="ocasionSelectedAccion(ocasion._id, ocasion.type)">
+                                        <label class="form-check-label" [for]="ocasion._id">
+                                            {{ocasion.type}}
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+    <div>
+    
+    
+    <div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="exampleModalLongTitle">Alerta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body poppis400" *ngIf="alertMessage === '1'">
+          Para crear un <strong>producto nuevo</strong> primero debes de seleccionar la categoria o la sub categoria en donde vas a guardar el producto.
+        </div>
+        <div class="modal-body poppis400" *ngIf="alertMessage === '2'">
+            Para crear un <strong>producto nuevo</strong> debes de agregar la imagen del producto.
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+</div>

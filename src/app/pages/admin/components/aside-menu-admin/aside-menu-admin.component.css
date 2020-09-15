@@ -1,0 +1,89 @@
+.aside-menu{
+    height: 100vh;
+    width: 15%;
+    background-color: #00b19d;
+    position: fixed;
+}
+
+.marca{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    border-bottom: 0.5px solid #009a89;
+}
+
+.nav{
+    cursor: pointer;
+    color: white;
+    background-color: #00b19d;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 0.5px solid #009a89;
+}
+
+.sub-nav{
+    cursor: pointer;
+    color: rgb(233, 233, 233);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    width: 100%;
+}
+
+
+.nav:hover{
+    background-color: #009a89;
+}
+
+.sub-nav:hover{
+    color: white;
+}
+
+.accordion-active{
+    background-color: #009a89 !important;
+    
+}
+
+.left-active{
+    border-left: 3.5px solid #006d60 !important;
+}
+
+.accordion {
+  
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.panel {
+    max-height: 0;
+    background-color: #009a89;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    width: 100% !important;
+}
+
+
+.icon-drop{
+    position: absolute !important;
+    right: 3%;
+}
+
+.icon-caret{
+    position: absolute !important;
+    right: 1%;
+    font-size: 15px;
+}
+
+.text-white{
+    color: white !important;
+}

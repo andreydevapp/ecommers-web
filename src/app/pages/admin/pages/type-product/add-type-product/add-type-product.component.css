@@ -1,0 +1,33 @@
+.body-window{
+    background-color: #f9fafd !important;
+}
+
+.row{
+    background-color: #f9fafd;
+}
+
+.container-dropdow{
+    display: inline-block;
+}
+
+.card-conatiner{
+    background-color: white !important;
+    width: 100%;
+    margin: auto;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.lines-border{
+    border: #d0d0d0 1px solid;
+}
+
+.card-header{
+    border: #d0d0d0 1px solid;
+}
+
+
+
+
